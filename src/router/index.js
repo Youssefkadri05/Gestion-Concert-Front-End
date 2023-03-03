@@ -1,9 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ArtisteGestion from '../views/ArtisteGestion.vue'
-import SalleDetails from '../components/SalleDetails.vue'
-import SallesGestion from '../components/SallesGestion.vue'
-
+import ArtisteGestion from '../components/Artiste/ArtisteGestion.vue'
+import GestionGroupe from '../components/Groupe/GestionGroupe.vue'
+import SalleDetails from '../components/Salle/SalleDetails.vue'
+import SalleGestion from '../components/Salle/SalleGestion.vue'
+import ConcertDetails from '../components/Concert/ConcertDetails.vue'
+import CreateArtiste from '../components/Artiste/CreateArtiste.vue'
+import ConcertListeForArtiste from '../components/Concert/ConcertListeForArtiste.vue'
+import ConcertListeForGroupe from '../components/Concert/ConcertListeForGroupe.vue'
+import CreateBillet from '../components/Ticket/CreateBillet.vue'
+import ConnexionHTTP from '../components/Connexion/ConnexionHTTP.vue'
 
 const routes = [
   {
@@ -17,19 +23,49 @@ const routes = [
     component: ArtisteGestion
   },
   {
+    path: '/CreateArtiste',
+    name: 'CreateArtiste',
+    component: CreateArtiste
+  },
+  {
     path: '/Groupes',
     name: 'GroupesGestion',
-    component: ArtisteGestion
+    component: GestionGroupe
   },
   {
     path: '/Salles',
     name: 'SalesGestion',
-    component: SallesGestion
+    component: SalleGestion
   },
   {
-    path: '/Salles/SalleDetails',
+    path: '/Salles/SalleDetails/:id',
     name: 'SalleDetails',
     component: SalleDetails
+  },
+  {
+    path: '/ConcertDetails/:id',
+    name: 'ConcertDetails',
+    component: ConcertDetails
+  },
+  {
+    path: '/ConcertListeForArtiste/:id',
+    name: 'ConcertListeForArtiste',
+    component: ConcertListeForArtiste
+  },
+  {
+    path: '/ConcertListeForGroupe/:id',
+    name: 'ConcertListeForGroupe',
+    component: ConcertListeForGroupe
+  },
+  {
+    path: '/Tickets/Acheter/:idSoiree',
+    name: 'AchterTicket',
+    component: CreateBillet
+  },
+  {
+    path: '/Connexion',
+    name: 'Connexion',
+    component: ConnexionHTTP
   },
   {
     path: '/About',
@@ -37,7 +73,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../components/Concert/ListeConcerts.vue')
   }
 ]
 
